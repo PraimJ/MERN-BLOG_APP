@@ -25,5 +25,14 @@ MongoDB handles the database operations.
 ExpressJS & NodeJS handles the server side tasks of sending responses to the front-end
 ReactJS handles the front-end
 
- mongodb it is like a no SQL database which stores documents in the collections instead of the record festivals as in the SQL database so if you are coming from the Excel background so you can refer the record as the documents what is the note
+Mongodb it is like a no SQL database which stores documents in the collections instead of the 
+record festivals as in the SQL database so if you are coming from the SQL background so you can 
+refer the record as the documents what is the note
+
+NodeJS: A javaScript engine originally built for browser, now can work without a browser and having some extra APIs. 
+Allows us to run the JS outside of the browser.
+
+ExpressJS: A framework for NodeJS which helps to ease the process. 
+
+ReactJS: A JS Library to build fast and scalable UI's. It's the View Part in MERN Stack. 
 
