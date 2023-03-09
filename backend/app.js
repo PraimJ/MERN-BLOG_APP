@@ -1,11 +1,23 @@
 import express from 'express';
 import mongoose from 'mongoose';
+import router from "./routes/user-routes";
 
 const app = express();
+
+app.use(express.json())
+// this helps the error of TypeError: Cannot destructure property name of req.body as it is undefined
+// This is happening because the application server does't know that what type of data it is recieving from req.body
+// We need to tell the application that we are receiving the json body
+// We can use this middleware before every middleware
+//It will aprse all the data into the JSON format
+
+app.use("/api/user", router) //http.//localhost:5000/api/user (this is what the route is)
 
 app.use("/api", (req, res, next) => {
     res.send("hello World")
 })
+
+
 
 mongoose.connect('mongodb+srv://admin:CYJRiJTEC4yI8Jyn@cluster0.hhtqhfa.mongodb.net/Blog?retryWrites=true&w=majority'
 ).then(() => app.listen(5001))
