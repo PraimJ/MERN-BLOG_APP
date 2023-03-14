@@ -37,7 +37,8 @@ export const signup = async (req, res, next) => {
     const user = new User({
         name,
         email,
-        password: hashedPassword
+        password: hashedPassword,
+        blogs: [], //since we required this in Schema we have to give it an empty array
     });
 
     try {

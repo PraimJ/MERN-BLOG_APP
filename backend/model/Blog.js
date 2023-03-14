@@ -17,9 +17,10 @@ const blogSchema = new Schema({
     },
     //Image is a string because the url is a string
     user: {
-        type: String,
-        required: true
-    }
-})
+        type: mongoose.Types.ObjectId, //type is the mongoose type of ObjectID from the Schema
+        ref: "User", // This references to the User Schema
+        required: true // the blog can only contian 1 user
+    },
+});
 
 export default mongoose.model("Blog", blogSchema);
