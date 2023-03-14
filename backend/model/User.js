@@ -16,8 +16,13 @@ const userSchema = new Schema({
         type: String,
         required: true,
         minlength: 6
-    }
-
+    },
+    blogs: [{
+        type: mongoose.Types.ObjectId,
+        ref: "Blog", //Blog is the make of the collection schema
+        required: true
+    }]
+    //users can contain more than one blog thats why it is an array
 })
 
 export default mongoose.model("User", userSchema);
