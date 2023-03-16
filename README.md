@@ -3,7 +3,7 @@ A simple blog application that uses the MERN Stack.
 
 APP PLAN:
 
-I have Created a Blog application with the MERB stack.
+I have Created a Blog application with the MERN stack.
 The folloing is the plan for the app. 
 I have a login screen and once I will just click on the submit so the ID of the user will be then stored inside the local storage 
 and then it will have some blogs onto the page like I have created all of the blogs from this user only so I can see that delete options 
@@ -35,4 +35,56 @@ Allows us to run the JS outside of the browser.
 ExpressJS: A framework for NodeJS which helps to ease the process. 
 
 ReactJS: A JS Library to build fast and scalable UI's. It's the View Part in MERN Stack. 
+
+
+
+Backend Set-Up:
+
+Frontend Set-Up:
+
+FRONT-END SET-UP
+1. CD to the highest. level folder for the app
+2. npx create-react-app (frontend)- This is your frontend foldername
+3. CD into the frotend folder
+4. Go into App.js, delete everything in the div
+5. go to index.js, take out web report import
+6. App.css, take out all styles
+7. index.css, take out all styles replace withe *{margin =0;}
+8. npm start
+9. To test the app put <HELLO WORLD> into the divs of App.js
+10. Add component folder, with your components
+11. If you have the Es7 +react/Redux/React-Native snippets Extension - this allows you to create your components with ease by using rface command
+
+ROUTES, NAVIGATION & HEADER
+12. npm install @mui/material @emotion/react @emotion/styled - Material UI offers a package of ready built ui components for your react app
+13. npm i react-router-dom, this is to control routes, import BrowerRouter in index.js and wrap the App with it
+14. In App.js import React,nesteverything with fragments
+15. Add all routes, on App.js
+16. Add link of routes in Header.js a component
+
+STATE MANAGEMENT: 
+install redux = npm i react-redux @reduxjs/toolkit
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
