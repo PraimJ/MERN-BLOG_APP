@@ -55,15 +55,18 @@ FRONT-END SET-UP
 10. Add component folder, with your components
 11. If you have the Es7 +react/Redux/React-Native snippets Extension - this allows you to create your components with ease by using rface command
 
-ROUTES, NAVIGATION & HEADER
+ROUTES, NAVIGATION & HEADER  
 12. npm install @mui/material @emotion/react @emotion/styled - Material UI offers a package of ready built ui components for your react app
 13. npm i react-router-dom, this is to control routes, import BrowerRouter in index.js and wrap the App with it
 14. In App.js import React,nesteverything with fragments
 15. Add all routes, on App.js
 16. Add link of routes in Header.js a component
+ 
 
 STATE MANAGEMENT: 
-install redux = npm i react-redux @reduxjs/toolkit
+17. install redux = npm i react-redux @reduxjs/toolkit
+18. make store folder
+  
 
 
 
