@@ -65,7 +65,25 @@ ROUTES, NAVIGATION & HEADER
 
 STATE MANAGEMENT: 
 17. install redux = npm i react-redux @reduxjs/toolkit
+
 18. make store folder
+
+19. Add index.js to the store - this is a file that has the whole data store, import configurestore, createslice, export store
+
+20. On index.js in frontend folder, impot Provider from 'react-redux', import store from store directory. Wrap the Provider around app component, and give store as a prop to the Provider. 
+
+CONNECTING FRONTEND WITH THE BACKEND: 
+
+21. To connect the backend to the frontend, we use axios, cd .. into the backend (cd./backend, npm start. then cd back into the frontend, cd./frontend 
+npm i axios.
+import axios to the component you are sending a request from. to import axois from "axois".
+
+22. Since we are sending 1 req from server( localhost:3000) to server (localhost:5001), we get a CORS error that restricts us from sharing info across servers. You can disable this by installing (npm i cors) to the backend. 
+Import cor from "cors" in App.js in the backend, then do app.use(cors()); before any midlleware in App.js in the backend. 
+
+23. Other packages to install =
+install npm i @mui/icons-materials to get icons
+instal npm i @mui/styles - this package allows to to put class styles to mui components (Box, TYpography)
   
 
 
