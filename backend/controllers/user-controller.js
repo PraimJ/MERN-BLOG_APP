@@ -69,7 +69,7 @@ export const login = async (req, res, next) => {
     if (!isPasswordCorrect) {
         return res.status(400).json({ message: "Incorrect Password" })
     }
-    return res.status(200).json({ message: "Login Successfull" })
+    return res.status(200).json({ message: "Login Successfull", user: existingUser }) //When succesfull the message will occur as will as give us the user object
 };
 
 //users is naturally undefined, but the async function trys to get all users with User.find()

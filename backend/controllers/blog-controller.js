@@ -6,7 +6,7 @@ import User from "../model/User";
 export const getAllBlogs = async (req, res, next) => {
     let blogs;
     try {
-        blogs = await Blog.find();
+        blogs = await Blog.find().populate("user"); //when getting the blogs, we want the collection of the user as well 
     } catch (err) {
         return console.log(err)
     }
@@ -45,8 +45,10 @@ export const addBlog = async (req, res, next) => {
         await session.commitTransaction(); // then we finish the transaction
     } catch (err) {
         return console.log(err);
+        return res.status(500).json({ message: err });
     }
     return res.status(200).json({ blog });
+    
 };
 
 export const updateBlog = async (req, res, next) => {
@@ -92,7 +94,7 @@ export const deleteBlogById = async (req, res, next) => {
         await blog.user.blogs.pull(blog); //this is pulling a specfic blog from the array of blogs within the user collection
         await blog.user.save(); // we need this because after the blog is deleted, we need to save the user collection to show it does not have the deleted blog
     } catch (err) {
-        return console.log(err)
+      console.log(err)
     }
     if (!blog) {
         return res.status(500).json({ message: "No Blogs Found with this ID, We can't delete" })
@@ -112,7 +114,7 @@ export const getBlogByUserId = async (req, res, next) => {
     if (!userBlogs) {
         return res.status(404).json({ message: `No blogs found for UserID: ${userId}` })
     }
-    return res.status(200).json({ blogs: userBlogs }); // the get req returns a (blogs:) is an object that has the user info and the array of all blogs of the specific user (userBlogs)
+    return res.status(200).json({ user: userBlogs }); // the get req returns a (user:) is an object that has the user which contains info and the array of all blogs of the specific user (userBlogs)
 };
 
 
