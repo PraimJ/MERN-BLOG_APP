@@ -38,7 +38,92 @@ ReactJS: A JS Library to build fast and scalable UI's. It's the View Part in MER
 
 
 
-Backend Set-Up:
+Backend Set-Up & Notes:
+
+In app.js
+
+
+
+app.use(express.json())
+// this helps the error of TypeError: Cannot destructure property name of req.body as it is undefined
+// This is happening because the application server does't know that what type of data it is recieving from req.body
+// We need to tell the application that we are receiving the json body
+// We can use this middleware before every middleware
+//It will aprse all the data into the JSON format
+
+
+//MongoDB Atlas password for BlogApp Cluster: CYJRiJTEC4yI8Jyn
+//MODEL Folder: Models of the users and the blog like schema, is the first thing to build
+//ROUTES Folder: Ths will control the routing operations, from which and from what route thr controller will call
+//CONTROLLERS Folder: Will contain the controller functions that will have the api routing to MongoDB & the ExpressJs
+
+
+//THESE ARE MIDLLEWARES
+app.use("/api/user", userRouter); //http.//localhost:5000/api/user (this is what the route is)
+app.use("/api/blog", blogRouter); //http.//localhost:5000/api/user (this is what the route is)
+
+in controller.js folder files: 
+
+//req.params: An object containing parameter values parsed from the URL path.
+//For example if you have the route /user/:name, then the "name" from the URL path wil be available as req.params.name. This object defaults to {}.
+
+//The idea of a session is that we store information on the server side and then we send a little cookie back to the client that says, Here's your key,
+// here's the ID you need to unlock that session.
+//But the first thing to get out of the way is that on the left where it says Data Store, that's not usually the same thing as your actual database. 
+//So a session does not replace a database.
+// in mongoose the session, startsession, startTransaction, CommitTransacrtion. 
+// I beleieve it is a way to communication two or more collections when they are chnaging. 
+
+
+//to import bcrypt.js use npm i bcrypt.js
+//bcrypt hashes your password to keep it secure
+//use it by  const hashedPassword = bcrypt.hashSync(password);
+
+
+//users is naturally undefined, but the async function trys to get all users with User.find()
+//if no users the return will be a status(404) then send a message of NO USERS FOUND
+//if there are users then status(200) show all users object. 
+
+//The async function declaration declares an async function where the await keyword 
+//is permitted within the function body. The async and await keywords enable asynchronous, 
+//promise-based behavior to be written in a cleaner style, avoiding the need to explicitly 
+//configure promise chains. Async function work with all http requests. 
+
+//req- is waht we request from the front-end, ex res.body, We test this with postman
+//res- is what we send to the front-end
+//next is goes to the next middleware.
+
+//FOR signup
+//res.body we are getting the destructured name, email, password
+//let existingUser is trying to find a one user in the collection of users in mongoDB with the req.body's email logged
+//we await this task
+//we catch the err and console log it
+//if there is a existingUser - return a 400 status with the message
+//if no existingUser the make a new User(with the name,email,password feilds)
+// try to put the user into the db with user.save (await this)
+//catch the err if there is then a console.log will tell you
+//then return res.status(201).json({user}) (it will return the new user object)
+// import this function to user-router in the post req
+
+model folder: 
+
+//in mongoDB the collection will be called users, instead as User because of naming conventions
+
+//A Mongoose schema defines the structure of the document, default values, 
+//validators, etc., whereas a Mongoose model provides an interface to the database 
+//for creating, querying, updating, deleting records, etc.
+//Everything in Mongoose starts with a Schema. Each schema maps to a MongoDB collection
+// and defines the shape of the documents within that collection.
+
+Route Folder: 
+
+//The express. Router class can be used to create modular mountable route handlers.
+// A Router instance is a complete middleware and routing system; for this reason it 
+//is often referred to as a “mini-app”.
+//Its like a api folder in next.js
+
+
+
 
 Frontend Set-Up:
 
