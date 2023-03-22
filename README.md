@@ -173,7 +173,14 @@ instal npm i @mui/styles - this package allows to to put class styles to mui com
 
 
 
+OTHER THINGS TO IMPOROVE THE APP: 
 
+1. When deleting a post the deleted blog does not come off the screen
+2. Change the underline of the tabs of the header to showcase what page we are on, sometimes the routes change and by submitting a form and the 
+ underlline stays on what you manually clicked on before
+ 3. Make the UI better
+ 
+ 
 
 
 
