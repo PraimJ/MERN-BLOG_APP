@@ -1,14 +1,23 @@
 import { useState } from 'react'
 import {AppBar, Typography, Toolbar, Box, Button, Tabs, Tab} from '@mui/material' //app bar provides content and actions related to the current screen. It’s used for branding, screen titles, navigation, and actions. It can transform into a contextual action bar.
 import {Link } from "react-router-dom"
+import { useSelector, useDispatch} from 'react-redux'
+import { authActions } from '../store'
+import { useStyles } from "./utils";
 
 //this libary contians all the UI components such as Navbars, Buttons & Modals
 //link: https://mui.com/material-ui/getting-started/supported-components/
 
 const Header = () => {
+//Logic live here
 
-    const [value, setValue] = useState();
+const classes = useStyles();
+const dispatch = useDispatch();
+const isLoggedIn = useSelector((state) => state.isLoggedIn);
 
+const [value, setValue] = useState();
+
+//JSX or HTML lives here
   return (
    <AppBar
    position='sticky'
@@ -16,22 +25,23 @@ const Header = () => {
     background: "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(1,187,239,1) 92%, rgba(0,212,255,1) 100%)"
 }}>
     <Toolbar > 
-       <Typography variant='h4'>BlogsApp</Typography>
-       <Box display="flex" marginLeft={"auto"} marginRight={"auto"}>
+       <Typography className={classes.font} variant='h4'>BlogsApp</Typography>
+       {isLoggedIn && <Box display="flex" marginLeft={"auto"} marginRight={"auto"}>
         <Tabs
         textColor='inherit'
-        value={value}
+        value={value} 
         onChange={(e,val) => setValue(val)}
         >
-            <Tab LinkComponent={Link} to="/blogs" label="All Blogs"/>
-            <Tab LinkComponent={Link} to="/myBlogs" label="My Blogs"/>
+            <Tab className={classes.font} LinkComponent={Link} to="/blogs" label="All Blogs"/>
+            <Tab className={classes.font} LinkComponent={Link} to="/myBlogs" label="My Blogs"/>
+            <Tab className={classes.font} LinkComponent={Link} to="/blogs/add" label="Add Blog"/>
             
         </Tabs>
-       </Box>
+       </Box>}
 
        <Box display ="flex" marginLeft="auto">
        
-       <Button 
+      {!isLoggedIn && <> <Button 
        LinkComponent={Link} to="/auth"
        variant ="contained"
        sx ={{margin:1, borderRadius: 10}}
@@ -43,14 +53,20 @@ const Header = () => {
        variant ="contained"
        sx ={{margin:1, borderRadius: 10}}
        color ="warning"
-       >SignUp</Button>
+       >SignUp</Button> </>}
 
-       <Button 
+       {/* //we put the two button in the same logic with the <></>, because of the 1 parent rule of JSX */}
+       {/* //When you are not logged in, the SignUp, LogOut buttons, show up */}
+
+      {isLoggedIn && <Button 
+       onClick={()=>dispatch(authActions.logout())}
        LinkComponent={Link} to="/auth"
        variant ="contained"
        sx ={{margin:1, borderRadius: 10}}
        color ="warning"
-       >LogOut</Button>
+       >LogOut</Button>}
+
+
 
        </Box>
     </Toolbar>

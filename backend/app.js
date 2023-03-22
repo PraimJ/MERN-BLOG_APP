@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import userRouter from "./routes/user-routes";
 import blogRouter from "./routes/blog-routes";
+import cors from "cors"
 
 const app = express();
 
@@ -12,6 +13,9 @@ app.use(express.json())
 // We can use this middleware before every middleware
 //It will aprse all the data into the JSON format
 
+app.use(cors());
+
+//THESE ARE MIDLLEWARES
 app.use("/api/user", userRouter); //http.//localhost:5000/api/user (this is what the route is)
 app.use("/api/blog", blogRouter); //http.//localhost:5000/api/user (this is what the route is)
 
